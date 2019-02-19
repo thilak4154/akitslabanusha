@@ -1,0 +1,23 @@
+<h1>Sign Up: New Member</h1>
+<%= flash[:notice] %>
+<%= form_tag :action => 'signup_create' do %>
+    <table class="tables">
+      <tr>
+        <th> <%= label_tag(:name)%></th>
+        <th> <%= text_field_tag(:name)%></th>
+      </tr>
+
+      <tr>
+        <th> <%= label_tag(:email)%></th>
+        <th> <%= text_field_tag(:email)%></th>
+      </tr>
+
+      <tr>
+        <th> <%= label_tag(:password)%></th>
+        <th> <%= password_field_tag(:password)%></th>
+      </tr>
+
+    </table>
+    </br>
+    <%= submit_tag "Create Profile"%>
+<% end %>

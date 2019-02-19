@@ -1,0 +1,31 @@
+<h1>Checkout History</h1>
+<p>ISBN: <%= @book[0].isbn %></p>
+<p><%= @book[0].name %> by <%= @book[0].authors %></p>
+
+<table class="tables">
+  <tr>
+    <th>User Id</th>
+    <th>User Name</th>
+    <th>Email</th>
+    <th>Date Issued</th>
+    <th>Date Returned</th>
+  </tr>
+  <% @checkout_history.each do |m|%>
+      <tr>
+        <td><%= m.user_id %></td>
+        <td><%= m.name %></td>
+        <td><%= m.email %></td>
+        <td><%= m.dateIssued %></td>
+        <td>
+          <% if !m.dateReturned %>
+              <%= link_to 'return', {:controller => 'users', :action => 'return', :book_id => m.book_id, :user_id => m.user_id} %>
+          <%else%>
+              <%= m.dateReturned %>
+          <%end%>
+        </td>
+      </tr>
+  <% end %>
+</table>
+
+<%= render 'books/footer'%>
+

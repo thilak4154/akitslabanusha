@@ -1,0 +1,23 @@
+<h1>Search Book</h1>
+
+<%= form_tag :action => 'search' do %>
+    <table class = 'tables'>
+      <tr>
+        <th> <%= label_tag(:search_string)%></th>
+        <th> <%= text_field_tag(:search_string , nil, placeholder: "Enter ISBN or Book attributes")%></th>
+      </tr>
+
+      <tr>
+        <th> <%= label_tag(:status)%></th>
+        <th align="left"> <%= select_tag "status", "<option>Available</option><option>Checked Out</option>".html_safe%></th>
+      </tr>
+    </table>
+    </br>
+    <%= submit_tag "Search"%>
+<% end %>
+<br>
+<%= link_to 'Back', books_path %>
+
+<br> <br>
+
+<%= render 'footer'%>

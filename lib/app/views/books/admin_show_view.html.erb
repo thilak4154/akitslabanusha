@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<table class = "tables">
+  <tr>
+    <td> Book Name</td>
+    <td> <b> <%= @book.name %></b></td>
+  </tr>
+
+  <tr>
+    <td> ISBN</td>
+    <td> <b> <%= @book.isbn %></b></td>
+  </tr>
+
+  <tr>
+    <td> Author(s)</td>
+    <td> <b> <%= @book.authors %></b></td>
+  </tr>
+
+  <tr>
+    <td> Book Description</td>
+    <td> <b> <%= @book.description %></b></td>
+  </tr>
+
+  <tr>
+    <td> Status </td>
+    <td> <b><%if @book.status=='available' %>
+          Available
+          <%else%>
+          Checked Out
+          <%end%>
+    </b></td>
+  </tr>
+</table>
+<!-- If an admin, show up the Edit functionality -->
+<!-- Checkout button -->
+<br> <br>
+
+<% if @book.status=='available' %>
+    <%= button_to "Checkout", { action: 'admin_reserve_initiate', id: @book.id }, method: :post, data: { confirm: "Are you sure?" } %>
+    <% else %>
+    <%= button_to "Checkout", { action: 'admin_reserve_initiate', id: @book.id }, { method: :post, disabled: :true} %>
+<%end%>
+<br> <br>
+<%= button_to "Checkout History", { action: 'checkout_history', id: @book.id }, { method: :post} %>
+<br> <br>
+
+<%= link_to 'Edit Details', edit_book_path(@book) %><br>
+<%= link_to 'Back', books_path %>
+<br> <br>
+<%= render 'footer'%>

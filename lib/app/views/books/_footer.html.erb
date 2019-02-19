@@ -1,0 +1,7 @@
+<% if session[:role] & User::IS_ADMIN > 0 %>
+    <%= link_to "Go to Homepage", controller: 'login', action: 'admin_landing' %>
+<% else %>
+    <%= link_to "Go to Homepage", controller: 'login', action: 'member_landing' %>
+<% end %>
+<br><br>
+<%= link_to "Logout", controller: 'login', action: 'logout' %>

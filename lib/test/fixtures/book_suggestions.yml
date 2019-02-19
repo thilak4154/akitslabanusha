@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+  isbn: 978-3-16-148410-0-0090
+  name: Java - Hands On
+  authors: Author5
+  description: description - Java
+
+two:
+  isbn: 978-3-16-148410-0-60
+  name: Book005
+  authors: bookAuthor5,bookAuthor(i+2.to_s)
+  description: description string for book5

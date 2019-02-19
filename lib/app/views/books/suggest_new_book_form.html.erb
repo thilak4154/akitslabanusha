@@ -1,0 +1,30 @@
+<h1> Add new Book Suggestion </h1>
+<%= form_tag action: 'suggest_new_book' do %>
+    <table class="tables">
+
+      <tr>
+        <th> <%= label_tag(:name)%></th>
+        <th> <%= text_field(:book, :name, required: :true)%></th>
+      </tr>
+
+      <tr>
+        <th> <%= label_tag(:isbn)%></th>
+        <th> <%= text_field(:book, :isbn)%></th>
+      </tr>
+
+      <tr>
+        <th> <%= label_tag(:authors)%></th>
+        <th> <%= text_field(:book, :authors, required: :true)%></th>
+      </tr>
+
+      <tr>
+        <th> <%= label_tag(:description)%></th>
+        <th> <%= text_field(:book, :description)%></th>
+      </tr>
+
+    </table>
+    <br>
+    <%= submit_tag "Add Suggestion"%>
+<%end%>
+<br><br>
+<%= render 'footer' %>

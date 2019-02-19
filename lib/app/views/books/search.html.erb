@@ -1,0 +1,33 @@
+<h1>Search Results</h1>
+<% if @books.count > 0 %>
+    <table class="tables">
+      <thead>
+      <tr>
+        <th> Book ISBN</th>
+        <th> Name</th>
+        <th> Authors</th>
+        <th> Description</th>
+        <th> Status</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @books.each do |book| %>
+          <tr>
+            <td> <%= book.isbn %> </td>
+            <td> <%= book.name %> </td>
+            <td> <%= book.authors %></td>
+            <td> <%= book.description %></td>
+            <td> <%if book.status == 'available' %> Available
+                  <% else%> Checked Out <%end%></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+  Your search criteria returned no results<br><br>
+<% end %>
+
+<%= link_to "New Search", controller: 'books', action: 'search_form' %>
+<br> <br>
+<%= render 'footer' %>

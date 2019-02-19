@@ -1,0 +1,12 @@
+<%=form_tag controller: 'books', action: 'admin_reserve' do %>
+    <tr>
+      <th> <%= label_tag :email, "Enter the member's email ID " %></th>
+      <th> <%= text_field_tag(:email)%></th>
+    </tr>
+
+    <%= hidden_field_tag :id , flash[:book_id] %>
+    <br> <br>
+    <%= submit_tag "Confirm" %>
+<%end%>
+<br> <br>
+<%= render 'footer' %>

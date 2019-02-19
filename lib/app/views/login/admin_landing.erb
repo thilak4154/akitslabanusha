@@ -1,0 +1,31 @@
+<h1>Welcome Admin</h1>
+<%=  flash[:notice]%>
+
+<table class="tables">
+
+  <tr>
+    <th> <%= link_to "Profile Details", action: 'edit_profile_new'%></th>
+  </tr>
+
+  <tr>
+    <th> <%= link_to "Manage Books", controller: 'books', action: 'index' %></th>
+  </tr>
+
+  <tr>
+    <th> <%= link_to "Manage Admins", controller: 'users', action: 'view_admins' %></th>
+  </tr>
+  <tr>
+    <th> <%= link_to "Manage Members", controller: 'users', action: 'view_members' %></th>
+  </tr>
+  <tr>
+    <th> <%= link_to "View Book Suggestions", controller: 'books', action: 'suggestions_index' %></th>
+  </tr>
+
+  <tr>
+    <th> <%= link_to "View current waitlist", controller: 'books', action: 'show_waitlist' %></th>
+  </tr>
+</table>
+
+<br>
+<%= link_to "Go to Homepage", controller: 'login', action: 'admin_landing' %><br><br>
+<%= link_to "Logout", controller: 'login', action: 'logout' %>

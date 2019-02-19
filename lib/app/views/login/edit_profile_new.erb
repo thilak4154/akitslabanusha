@@ -1,0 +1,33 @@
+<h1>Update your profile</h1>
+<%=  flash[:notice]%>
+<br><br>
+<%= form_tag action: 'update_profile' do %>
+    <table class="tables">
+
+      <tr>
+        <th> <%= label_tag(:email)%></th>
+        <th> <%= text_field(:user, :email, disabled: true)%></th>
+      </tr>
+
+      <tr>
+        <th> <%= label_tag(:password)%></th>
+        <th> <%= password_field(:user, :password)%></th>
+      </tr>
+
+      <tr>
+        <th> <%= label_tag(:name)%></th>
+        <th> <%= text_field(:user, :name) %></th>
+      </tr>
+
+    </table>
+    <br>
+    <%= submit_tag "Update Profile"%>
+<% end %>
+<br> <br>
+<% if session[:role] == 1 %>
+    <%= link_to "Go to Homepage", controller: 'login', action: 'admin_landing' %>
+<% else %>
+    <%= link_to "Go to Homepage", controller: 'login', action: 'member_landing' %>
+<% end %>
+<br> <br>
+<%= link_to "Logout", controller: 'login', action: 'logout' %>

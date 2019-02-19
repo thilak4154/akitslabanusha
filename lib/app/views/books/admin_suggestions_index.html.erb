@@ -1,0 +1,33 @@
+<h1>Book Suggestions</h1>
+
+<p id="notice"><%=flash[:notice] %></p>
+
+<%if @suggestions.count > 0 %>
+
+    <%= form_tag :action => :add_to_catalog do %>
+        <table class="tables">
+          <thead>
+          <tr>
+            <th> Book Name</th>
+            <th> Author(s)</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <% @suggestions.each do |suggestion| %>
+              <tr>
+                <td> <%= suggestion.name %> </td>
+                <td> <%= suggestion.authors %></td>
+                <td> <%= link_to "Approve", action: 'edit_suggestion_details_form', id: suggestion %></td>
+                <td> <%= link_to "Delete", action: 'delete_suggestion', id: suggestion %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+    <% end %>
+<% else %>
+    <b> There are currently no book suggestions</b>
+<% end %>
+<br> <br>
+
+<%= render 'footer'%>

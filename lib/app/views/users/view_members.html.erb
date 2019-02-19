@@ -1,0 +1,31 @@
+<h1>Library Members</h1>
+<p>Active Members</p>
+<% if !@active_members%>
+             No member enrolled to be displayed.
+<% else %>
+<%= form_tag :action => 'delete_members' do %>
+<table class="tables">
+  <tr>
+    <th>selections</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Checkouts</th>
+    <th>Make Admin</th>
+  </tr>
+  <% @active_members.each do |m|%>
+  <tr>
+    <td><%= check_box_tag 'to_be_deleted_members[]', m.id %></td>
+    <td><%=  m.name %></td>
+    <td><%=  m.email %></td>
+    <td><%= link_to "#{m.reservation_count}", {:action => 'checkouts', :userId => m.id}%></td>
+    <td><%= link_to 'Make Admin',{:action => 'create_admin', :email => m.email}%></td>
+  </tr>
+  <% end %>
+</table>
+    <br>
+    <%= submit_tag "Delete" %>
+<% end %>
+    <%=  flash[:notice]%>
+<%end%>
+<br> <br>
+<%= render 'books/footer'%>

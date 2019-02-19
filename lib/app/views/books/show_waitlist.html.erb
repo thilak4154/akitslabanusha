@@ -1,0 +1,41 @@
+<table class="tables">
+  <% if @waitlists.count > 0 %>
+  <thead>
+  <tr>
+    <th> Book Name</th>
+    <th> Waiting Number</th>
+    <th> Created At </th>
+    <th> Member email</th>
+    <th> Member Name </th>
+  <tbody>
+
+  <%waiting_number = 1
+     curr_book = ""
+     prev_book = "" %>
+  <% @waitlists.each do |entry| %>
+      <tr>
+        <% curr_book = entry.book.name
+        if curr_book != prev_book
+            prev_book = curr_book
+            waiting_number = 1
+        else
+            waiting_number = waiting_number + 1
+        end%>
+
+        <td> <%= entry.book.name %> </td>
+        <td> W/L <%= waiting_number %></td>
+        <td><%= entry.created_at %></td>
+        <td><%= entry.user.email%></td>
+        <td><%= entry.user.name %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+  <% else %>
+      There are no users currently waiting on any book.
+  <%end%>
+<br>
+<br>
+
+<%= render 'footer' %>

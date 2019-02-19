@@ -1,0 +1,25 @@
+<h1>Welcome Member</h1>
+<%=  flash[:notice]%>
+
+<table class="tables">
+
+  <tr>
+    <th> <%= link_to "Profile Details", action: 'edit_profile_new'%></th>
+  </tr>
+
+  <tr>
+    <th> <%= link_to "Book Catalogue", controller: 'books', action: 'index' %></th>
+  </tr>
+
+  <tr>
+    <th> <%= link_to "Checkout History", controller: 'users', action: 'checkouts' %></th>
+  </tr>
+
+  <tr>
+    <th> <%= link_to "View Suggestions", controller: 'books', action: 'suggestions_index' %></th>
+  </tr>
+
+</table>
+<br> <br>
+<%= link_to "Go to Homepage", controller: 'login', action: 'member_landing' %><br><br>
+<%= link_to "Logout", controller: 'login', action: 'logout' %>
